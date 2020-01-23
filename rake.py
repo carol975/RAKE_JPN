@@ -5,11 +5,6 @@ import MeCab
 from jpn_stop_words import jpn_stop_words
 
 
-"""
-print(len(sent))
-print(sent.split())
-"""
-
 class Rake:
     def __init__(self):
         self.tagger = MeCab.Tagger("-Owakati")
@@ -54,31 +49,3 @@ class Rake:
 sent = "杉山古墳（すぎやまこふん）は、奈良県奈良市大安寺にある古墳。形状は前方後円墳。大安寺古墳群を構成する古墳の1つ。国の史跡に指定されている（史跡「大安寺旧境内 附 石橋瓦窯跡」のうち）。" 
 r = Rake()
 print(r.get_keywords(sent))        
-        
-"""    
-    
-wakati = MeCab.Tagger("-Owakati")
-print(wakati.parse(sent))
-print(format_text(wakati.parse(sent)))
-sent = format_text(sent)
-word_list = wakati.parse(sent).split()
-word_list = [word for word in word_list if word not in jpn_stop_words ]
-
-
-print(word_list)
-
-freq = {}
-deg = {}
-
-for word in word_list:
-    freq[word] = (freq.get(word) or 0) + 1
-    deg[word] = (deg.get(word) or 0) + 1 + len(word)
-    
-score = {}
-for word in word_list:
-    score[word] = deg[word]/freq[word]
-    
-print(freq)
-print(deg)
-print(score)
-"""
